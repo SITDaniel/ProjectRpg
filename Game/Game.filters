@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Source\Entities">
+      <UniqueIdentifier>{7be8ace1-ce39-404e-8bcf-983938729d7f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\World">
+      <UniqueIdentifier>{8923117a-c7f9-422b-9267-8cf810c51fed}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="World.h">
+      <Filter>Source\World</Filter>
+    </ClInclude>
+    <ClInclude Include="Map.h">
+      <Filter>Source\World</Filter>
+    </ClInclude>
+    <ClInclude Include="Character.h">
+      <Filter>Source\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="Health.h">
+      <Filter>Source\Entities</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Main.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Character.cpp">
+      <Filter>Source\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="World.cpp">
+      <Filter>Source\World</Filter>
+    </ClCompile>
+    <ClCompile Include="Map.cpp">
+      <Filter>Source\World</Filter>
+    </ClCompile>
+    <ClCompile Include="Health.cpp">
+      <Filter>Source\Entities</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

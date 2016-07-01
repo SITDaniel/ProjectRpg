@@ -1,0 +1,96 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="Main.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Map.cpp">
+      <Filter>Source\World</Filter>
+    </ClCompile>
+    <ClCompile Include="World.cpp">
+      <Filter>Source\World</Filter>
+    </ClCompile>
+    <ClCompile Include="Character.cpp">
+      <Filter>Source\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="Health.cpp">
+      <Filter>Source\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="Potion.cpp">
+      <Filter>Source\Entities\Items</Filter>
+    </ClCompile>
+    <ClCompile Include="Inventory.cpp">
+      <Filter>Source\Entities\Inventory</Filter>
+    </ClCompile>
+    <ClCompile Include="Weapon.cpp">
+      <Filter>Source\Entities\Items</Filter>
+    </ClCompile>
+    <ClCompile Include="Tile.cpp">
+      <Filter>Source\World</Filter>
+    </ClCompile>
+    <ClCompile Include="Enemy.cpp">
+      <Filter>Source\Entities\Enemies</Filter>
+    </ClCompile>
+    <ClCompile Include="Damage.cpp">
+      <Filter>Source\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="CharacterLevel.cpp">
+      <Filter>Source\Entities</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Map.h">
+      <Filter>Source\World</Filter>
+    </ClInclude>
+    <ClInclude Include="World.h">
+      <Filter>Source\World</Filter>
+    </ClInclude>
+    <ClInclude Include="Character.h">
+      <Filter>Source\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="Health.h">
+      <Filter>Source\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="Inventory.h">
+      <Filter>Source\Entities\Inventory</Filter>
+    </ClInclude>
+    <ClInclude Include="Potion.h">
+      <Filter>Source\Entities\Items</Filter>
+    </ClInclude>
+    <ClInclude Include="Weapon.h">
+      <Filter>Source\Entities\Items</Filter>
+    </ClInclude>
+    <ClInclude Include="Tile.h">
+      <Filter>Source\World</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemy.h">
+      <Filter>Source\Entities\Enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="Damage.h">
+      <Filter>Source\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="CharacterLevel.h">
+      <Filter>Source\Entities</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Source">
+      <UniqueIdentifier>{3a5942c4-3aee-41b3-8f59-2675c804ec13}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\World">
+      <UniqueIdentifier>{47d0687f-4804-437c-8457-92bc5a2fff81}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Entities">
+      <UniqueIdentifier>{dc7cb955-a442-40fd-9d8d-8d9fbb5c9546}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Entities\Items">
+      <UniqueIdentifier>{eacf0e39-8774-497e-a907-76b32a4a5e4d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Entities\Inventory">
+      <UniqueIdentifier>{cbf98c85-3601-4f46-9d28-cbd8f386fc22}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Entities\Enemies">
+      <UniqueIdentifier>{c0b33d06-f21b-486b-b6f5-78ddbbd6a811}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>
