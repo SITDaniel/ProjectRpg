@@ -55,3 +55,13 @@ void Health::SetMaxHealth(int amount)
 {
 	max_health = amount;
 }
+
+void Health::Heal(int healed_value)
+{
+    current_health += healed_value;
+
+    if (current_health > max_health)
+    {
+        current_health = max_health;
+    }
+}

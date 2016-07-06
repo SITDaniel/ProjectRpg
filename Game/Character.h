@@ -37,12 +37,18 @@ public:
 	void DisplayLevel();
 	void DisplayPosition();
 
+    int GetKills();
+    void SetKills(int kills);
+
+    
+
 private:
 	Health hp;
 	Damage dmg;
 	Inventory bag;
 	CharacterLevel level;
-
+    int kills;
+    
 	int position_x;
 	int position_y;
 };

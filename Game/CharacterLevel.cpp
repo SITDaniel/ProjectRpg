@@ -1,4 +1,5 @@
 #include "CharacterLevel.h"
+#include "Health.h"
 
 CharacterLevel::CharacterLevel()
 {
@@ -38,5 +39,7 @@ void CharacterLevel::AddExperience(int amount)
 		nextExperience += (int)((float)nextExperience * 0.25f);
 
 		level++;
+        
+        
 	}
 }

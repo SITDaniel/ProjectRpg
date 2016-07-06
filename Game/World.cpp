@@ -50,6 +50,6 @@ void World::InitCharacter()
 {
 	Damage& dmg = player.GetDamage();
 
-	dmg.SetMinDamage(6);
-	dmg.SetMaxDamage(12);
+	dmg.SetMinDamage(50);
+	dmg.SetMaxDamage(50);
 }
