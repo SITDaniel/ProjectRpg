@@ -47,6 +47,7 @@ private:
     string map_name;
 
 	bool fightStarted;
+	bool hasKilled;
 
     int width;
     int height;

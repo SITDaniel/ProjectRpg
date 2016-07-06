@@ -13,6 +13,7 @@ Map::Map()
     height = 0;
 
 	fightStarted = false;
+	hasKilled = false;
 }
 
 Map::Map(int width, int height)
@@ -92,37 +93,53 @@ void Map::GetInput()
         cout << "Start fight: f\n" << endl;
 	}
 
-    else
-    {
-        cout << "Fighting\n" << endl;
+	else
+	{
+		if (!hasKilled)
+		{
 
-        cout << "Fight: f\n" << endl;
-    }
+			cout << "Fighting\n" << endl;
+
+			cout << "Fight: f\n" << endl;
+		}
+		else
+		{
+			cout << "Fighting\n" << endl;
+
+			cout << "Fight: f\n";
+			cout << "Run: r\n" << endl;
+		}
+	}
 
 	char i;
 	cout << "Your choice: ";
     cin >> i;
 
-    if (i == 'r')
-    {
-        GoRight();
-    }
-    else if (i == 'l')
-    {
-        GoLeft();
-    }
-    else if (i == 'u')
-    {
-        GoUp();
-    }
-    else if (i == 'd')
-    {
-        GoDown();
-    }
-	else if (i == 'f')
+	if (!fightStarted)
+	{
+		if (i == 'r')
+		{
+			GoRight();
+		}
+		else if (i == 'l')
+		{
+			GoLeft();
+		}
+		else if (i == 'u')
+		{
+			GoUp();
+		}
+		else if (i == 'd')
+		{
+			GoDown();
+		}
+	}
+
+	if (i == 'f')
 	{
 		if (tiles[character->GetPositionX()][character->GetPositionY()].GetEnemiesSize() > 0)
 		{
+			hasKilled = false;
             fightStarted = true;
 			Fight();
             
@@ -132,6 +149,17 @@ void Map::GetInput()
             fightStarted = false;
 			cout << "You do not have any enemies here" << endl;
 		}
+	}
+
+	else if (i == 'r' && hasKilled == true)
+	{
+		fightStarted = false;
+		
+	}
+
+	else
+	{
+		cout << "Invalid command! \n";
 	}
 
     Display();
@@ -307,8 +335,16 @@ void Map::Fight()
                 {
                     character->GetLevel().AddExperience(rand() % 50 + 30);
                     cout << "You have killed an enemy!\n";
+					hasKilled = true;
                     tile.ReduceEnemies(1);              
                     character->SetKills(character->GetKills()+1);
+
+
+
+					if (character->GetLevel().HasLeveled())
+					{
+						character->GetHealth().Heal(character->GetHealth().GetMaxHealth());
+					}
 
 
 

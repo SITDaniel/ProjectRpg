@@ -1,5 +1,7 @@
 #pragma once
 
+
+
 class CharacterLevel
 {
 public:
@@ -13,9 +15,14 @@ public:
 
 	void AddExperience(int amount);
 
+	bool HasLeveled();
+
 private:
 	int level;
+	int previous_level;
 
 	int currentExperience;
 	int nextExperience;
+
+	
 };
