@@ -68,3 +68,9 @@ int Tile::GetEnemiesSize()
 {
 	return enemies_size;
 }
+
+void Tile::ReduceEnemies(int i)
+{
+   
+    enemies_size -= i;
+}

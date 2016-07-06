@@ -14,6 +14,7 @@ public:
 	int GetCurrentHealth();
 	int GetMinHealth();
 	int GetMaxHealth();
+    void Heal(int healed_value);
 
 	bool IsDead();
 

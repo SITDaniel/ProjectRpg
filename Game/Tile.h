@@ -25,6 +25,8 @@ public:
 
 	Enemy& operator[](int index);
 	Enemy* GetEnemies();
+    void ReduceEnemies(int i);
+    
 
 private:
 	TileType type;

@@ -4,6 +4,8 @@ Character::Character()
 {
 	position_x = 0;
 	position_y = 0;
+    kills = 0;
+    
 }
 
 Character::~Character()
@@ -86,4 +88,14 @@ void Character::DisplayLevel()
 void Character::DisplayPosition()
 {
 	cout << "\nPlayer position: " << position_x << " " << position_y << endl;
+}
+
+int Character::GetKills()
+{
+    return kills;
+}
+
+void Character::SetKills(int kills)
+{
+    this->kills = kills;
 }

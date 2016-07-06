@@ -3,6 +3,8 @@
 #include "Tile.h"
 #include "Enemy.h"
 
+
+
 Map::Map()
 {
     map_name = "unnamed map";
@@ -54,6 +56,7 @@ void Map::Display()
 
 	character->DisplayHealth();
 	character->DisplayLevel();
+    cout << "Kills: " << character->GetKills();
 
 	if (!fightStarted)
 	{
@@ -85,12 +88,16 @@ void Map::GetInput()
 		cout << "Left: l\n";
 		cout << "Right: r\n";
 		cout << "Down: d\n";
-		cout << "Up: u\n" << endl;
+        cout << "Up: u\n";
+        cout << "Start fight: f\n" << endl;
 	}
 
-	cout << "Fighting\n" << endl;
+    else
+    {
+        cout << "Fighting\n" << endl;
 
-	cout << "Fight: f\n" << endl;
+        cout << "Fight: f\n" << endl;
+    }
 
 	char i;
 	cout << "Your choice: ";
@@ -116,10 +123,13 @@ void Map::GetInput()
 	{
 		if (tiles[character->GetPositionX()][character->GetPositionY()].GetEnemiesSize() > 0)
 		{
+            fightStarted = true;
 			Fight();
+            
 		}
 		else
 		{
+            fightStarted = false;
 			cout << "You do not have any enemies here" << endl;
 		}
 	}
@@ -262,36 +272,67 @@ void Map::Fight()
 {
 	cout << "Fight started" << endl;
 
-	fightStarted = true;
+    
+    
+	
+    
 
 	Tile& tile = tiles[character->GetPositionX()][character->GetPositionY()];
 
-	for (int i = 0; i < tile.GetEnemiesSize(); i++)
-	{
-		Enemy& enemy = tile.GetEnemies()[i];
+    
 
-		if (!enemy.GetHp().IsDead())
-		{
-			// player turn
-			int damage = character->GetDamage().GetMaxDamage();
+    if (tile.GetEnemiesSize() > 0)
+    {
+        for (int i = tile.GetEnemiesSize(); i >= 0; i--)
+        {
+            Enemy& enemy = tile.GetEnemies()[i];
 
-			enemy.GetHp().LoseHealth(damage);
 
-			if (!enemy.GetHp().IsDead())
-			{
-				// enemy turn
-				int enemy_dmg = enemy.GetDmg().GetMinDamage();
 
-				character->GetHealth().LoseHealth(enemy_dmg);
-			}
-			else
-			{
-				character->GetLevel().AddExperience(rand() % 50 + 30);
-			}
+            if (!enemy.GetHp().IsDead())
+            {
+                // player turn
+                int damage = character->GetDamage().GetMaxDamage();
 
-			break;
-		}
-	}
+                enemy.GetHp().LoseHealth(damage);
+
+                if (!enemy.GetHp().IsDead())
+                {
+                    // enemy turn
+                    int enemy_dmg = enemy.GetDmg().GetMinDamage();
+
+                    character->GetHealth().LoseHealth(enemy_dmg);
+                }
+                else
+                {
+                    character->GetLevel().AddExperience(rand() % 50 + 30);
+                    cout << "You have killed an enemy!\n";
+                    tile.ReduceEnemies(1);              
+                    character->SetKills(character->GetKills()+1);
+
+
+
+
+
+                }
+
+
+                break;
+
+
+            }
+            else
+                continue;
+
+        }
+    }
+    
+  
+
+   
+    
+    
+    
 }
 
 void Map::DisplayMap()
