@@ -4,6 +4,7 @@
 
 World::World()
 {
+    map_index = 0;
 }
 
 World::~World()
@@ -52,4 +53,21 @@ void World::InitCharacter()
 
 	dmg.SetMinDamage(6);
 	dmg.SetMaxDamage(12);
+}
+
+
+
+Character& World::GetCharacter()
+{
+    return player;
+}
+
+void World::SetMapIndex(int map_index)
+{
+    this->map_index = map_index;
+}
+
+int World::GetMapIndex()
+{
+    return map_index;
 }

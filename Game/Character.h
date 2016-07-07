@@ -34,12 +34,15 @@ public:
 	CharacterLevel& GetLevel();
 
 	void DisplayHealth();
-	void DisplayLevel();
 	void DisplayPosition();
 
     int GetKills();
     void SetKills(int kills);
 
+    void DisplayStats();
+
+    void SetMapIndex(int map_index);
+    int GetMapIndex();
     
 
 private:
@@ -51,4 +54,6 @@ private:
     
 	int position_x;
 	int position_y;
+
+    int map_index;
 };

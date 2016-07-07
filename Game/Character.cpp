@@ -73,17 +73,11 @@ CharacterLevel& Character::GetLevel()
 }
 
 void Character::DisplayHealth()
-{
-	cout << "Player health: min " << hp.GetMinHealth() << " max " << hp.GetMaxHealth() << endl;
-	cout << "Player current health: " << hp.GetCurrentHealth() << endl;
+{	
+    cout << "Player current health: " << hp.GetCurrentHealth() << " / " << hp.GetMaxHealth() << endl;
 }
 
-void Character::DisplayLevel()
-{
-	cout << "\nPlayer level: " << level.GetLevel() << endl;
-	cout << "Player current experience: " << level.GetCurrrentExperience() << endl;
-	cout << "Player next experience: " << level.GetNextExperience() << endl;
-}
+
 
 void Character::DisplayPosition()
 {
@@ -98,4 +92,25 @@ int Character::GetKills()
 void Character::SetKills(int kills)
 {
     this->kills = kills;
+}
+
+void Character::DisplayStats()
+{
+    cout << "Player kills :" << GetKills() << endl;
+    cout << "Player Level :" << level.GetLevel() <<  endl;  
+    cout << "Player current experience: " << level.GetCurrrentExperience() << endl;
+    cout << "Player next experience: " << level.GetNextExperience() << endl;
+    cout << "Inventory space: " << bag.GetInventorySize();
+
+    //More stats to be added here
+}
+
+void Character::SetMapIndex(int map_index)
+{
+    this->map_index = map_index;
+}
+
+int Character::GetMapIndex()
+{
+    return map_index;
 }

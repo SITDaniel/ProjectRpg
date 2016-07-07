@@ -15,7 +15,12 @@ public:
 	void CreateMaps(int size);
 	void InitCharacter();
 
+    void SetMapIndex(int map_index);
+    int GetMapIndex();
+
 	static World& GetInstance();
+
+    Character& GetCharacter();
 
 private:
 	World();
@@ -25,4 +30,5 @@ private:
 
 	Character player;
     int size;
+    int map_index;
 };

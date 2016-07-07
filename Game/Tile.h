@@ -8,7 +8,8 @@ public:
 	enum TileType
 	{
 		GRASS,
-		HOLE
+		HOLE,
+        TRANSITION
 	};
 
 	Tile();

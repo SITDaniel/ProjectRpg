@@ -2,6 +2,8 @@
 #include "Character.h"
 #include "Tile.h"
 #include "Enemy.h"
+#include "World.h"
+#include <conio.h>
 
 
 
@@ -14,6 +16,8 @@ Map::Map()
 
 	fightStarted = false;
 	hasKilled = false;
+    hasTransitioned = false;
+    
 }
 
 Map::Map(int width, int height)
@@ -56,8 +60,9 @@ void Map::Display()
     cout << "Map name: " << map_name <<"\n" << endl;
 
 	character->DisplayHealth();
-	character->DisplayLevel();
-    cout << "Kills: " << character->GetKills();
+	
+
+    
 
 	if (!fightStarted)
 	{
@@ -90,7 +95,8 @@ void Map::GetInput()
 		cout << "Right: r\n";
 		cout << "Down: d\n";
         cout << "Up: u\n";
-        cout << "Start fight: f\n" << endl;
+        cout << "Start fight: f\n";
+        cout << "Show stats : ?\n"<<endl;
 	}
 
 	else
@@ -114,6 +120,8 @@ void Map::GetInput()
 	char i;
 	cout << "Your choice: ";
     cin >> i;
+
+    i = tolower(i); // converts possible uppercase input into lowercase
 
 	if (!fightStarted)
 	{
@@ -147,7 +155,7 @@ void Map::GetInput()
 		else
 		{
             fightStarted = false;
-			cout << "You do not have any enemies here" << endl;
+			cout << "You do not have any enemies here." << endl;
 		}
 	}
 
@@ -156,6 +164,14 @@ void Map::GetInput()
 		fightStarted = false;
 		
 	}
+
+    else if (i == '?')
+    {
+        
+        character->DisplayStats();
+        cout << "\nPress any key to go back.\n";
+        getch();
+    }
 
 	else
 	{
@@ -249,6 +265,8 @@ void Map::GenerateMap()
 		{
 			int tile_rand = rand() % 6 + 1;
 
+            
+
 			if (tile_rand == 3)
 			{
 				tiles[i][j].SetType(Tile::HOLE);
@@ -267,6 +285,8 @@ void Map::GenerateMap()
 				}
 			}
 		}
+
+        tiles[0][5].SetType(Tile::TRANSITION); // [0][5] in next map will be [last][5];
 	}
 }
 
@@ -278,8 +298,28 @@ void Map::Move(int next_x, int next_y)
 
 		character->GetHealth().LoseHealth(lost_life);
 
-		cout << "\nHole warning!\nYou have lost: " << lost_life << " life points\n";
+		cout << "\n\nHole warning!\nYou have lost: " << lost_life << " life points\n";
 	}
+
+    if (tiles[next_x][next_y].GetType() == Tile::TRANSITION)
+    {
+        cout << "You've found a cave leading to another area. Would you like to go to it? Y/N\n";
+        char i;
+        cin >> i;
+
+        i = tolower(i);
+
+        if (i == 'y')
+        {
+            character->SetPositionX(9);
+            
+            
+            World::GetInstance().SetMapIndex(1);
+            // map transition needs to be here
+            tiles[character->GetPositionX()][character->GetPositionY()+1].SetType(Tile::TRANSITION);
+        }
+        
+    }
 }
 
 char Map::DisplayTile(Tile& tile)
@@ -292,6 +332,11 @@ char Map::DisplayTile(Tile& tile)
 	{
 		return 'h';
 	}
+
+    else if (tile.GetType() == Tile::TRANSITION)
+    {
+        return 'x';
+    }
 
 	return 'u';
 }
@@ -346,6 +391,14 @@ void Map::Fight()
 						character->GetHealth().Heal(character->GetHealth().GetMaxHealth());
 					}
 
+                    if (tile.GetEnemiesSize() == 0)
+                    {
+                        cout << "Fight has ended.\n";
+                        fightStarted = false;
+                        hasKilled = false;
+                        Display();
+                    }
+
 
 
 
@@ -362,6 +415,8 @@ void Map::Fight()
 
         }
     }
+
+    
     
   
 

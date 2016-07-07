@@ -38,6 +38,7 @@ public:
     void GoUp();
     void GoDown();
 
+
 private:
 	char DisplayTile(Tile& tile);
 
@@ -51,4 +52,10 @@ private:
 
     int width;
     int height;
+
+    bool hasTransitioned;
+
+   
+
+    
 };
