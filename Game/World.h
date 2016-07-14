@@ -18,6 +18,7 @@ public:
     void SetMapIndex(int map_index);
     int GetMapIndex();
 
+    void SetCurrentMap(int index);
 	static World& GetInstance();
 
     Character& GetCharacter();

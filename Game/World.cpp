@@ -71,3 +71,12 @@ int World::GetMapIndex()
 {
     return map_index;
 }
+
+void World::SetCurrentMap(int index)
+{
+    map_index = index;
+
+    Map& m = maps[map_index];
+    m.SetCharacter(&player);
+    m.Display();
+}

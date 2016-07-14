@@ -7,6 +7,7 @@
 
 
 
+
 Map::Map()
 {
     map_name = "unnamed map";
@@ -55,6 +56,8 @@ void Map::operator()(int width, int height)
 
 void Map::Display()
 {
+    
+
 	cout << "\n========================================\n" << endl;
 
     cout << "Map name: " << map_name <<"\n" << endl;
@@ -73,9 +76,13 @@ void Map::Display()
 
 	bool is_dead = character->GetHealth().IsDead();
 
+   
+
 	if (!is_dead)
 	{
-		GetInput();
+      
+        GetInput();       
+       
 	}
 	else
 	{
@@ -314,9 +321,11 @@ void Map::Move(int next_x, int next_y)
             character->SetPositionX(9);
             
             
-            World::GetInstance().SetMapIndex(1);
+          //  World::GetInstance().SetMapIndex(1);
+            World::GetInstance().SetCurrentMap(1);
             // map transition needs to be here
             tiles[character->GetPositionX()][character->GetPositionY()+1].SetType(Tile::TRANSITION);
+            
         }
         
     }
